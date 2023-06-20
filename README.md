@@ -16,3 +16,4 @@ Flask based REST API with a simple HTML/JS interface
 - SQLite as the database
 - HTML/JS to create the web app pages (JS AJAX,Instascan,jQuery)
 - For more information refer to the report pdf (skip the endpoint parts, it's boring)
+![d212f088e9aaf49dece1f5763987453c](https://github.com/JRNCz/GymQRCodes/assets/83510823/ccaad83d-e4b7-4e9a-9a55-8a295f285be8)
