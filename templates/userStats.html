@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>STAT ID</th>
+        <th>IST ID</th>
+        <th>GATE ID</th>
+        <th>DATE</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in data %}
+        <tr>
+          <td>{{ i.stat_id }}</td>
+          <td>{{ i.ist_id }}</td>
+          <td>{{ i.gate_id }}</td>
+          <td>{{ i.date }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

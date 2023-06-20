@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js">
+    </script>
+  <link rel="stylesheet" type="text/css" 
+       href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.css">
+    <script 
+      src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.js">
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $("#ImageShow").show();
+            $("#Image2Show").hide();
+            setTimeout(function() {
+            $('#ImageShow').hide();
+            }, 6000); // <-- time in milliseconds
+            setTimeout(function() {
+            $('#Image2Show').show();
+            }, 6000);
+        });
+
+    </script>
+    
+  </head>
+  <body>
+    <h1> User Correto </h1>
+    <h2> Porta Aberta </h2>
+    <h3> The door has a 6 seconds timeout - Use it while you can! </h3>
+    
+    <div class="ui small image 1" id="ImageShow"> <img src="{{gif_url}}"></div>
+    <div class="ui small image 2 " id="Image2Show"> <img src="{{gif2_url}}"></div>
+    <br><br>
+    
+
+  </body>
+
+</html>
+
+
+
+
+

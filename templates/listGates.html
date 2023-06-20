@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Secret</th>
+        <th> Numb of activ</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in data %}
+        <tr>
+          <td>{{ i.gate_id }}</td>
+          <td>{{ i.gate_location }}</td>
+          <td>{{ i.gate_secret }}</td>
+          <td>{{ i.gate_numb_of_activation }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

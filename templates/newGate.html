@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div>
+        <form action = "/gates" method="POST">
+            Gate Name: 
+            <textarea id="gate_location" name="gate_location" rows="1" cols="12"></textarea>
+            Gate Secret:
+            <textarea id="gate_secret" name="gate_secret" rows="1" cols="12"></textarea>
+            <p> press the submit button to store the file on the server</p>
+            <input type="submit">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instascan</title>
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>	
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css"  href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.css">
+    <script  src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.js">  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-xmlrpc/0.4.3/jquery.xmlrpc.js"> </script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+  </head>
+  <body>
+      <h3> Gate Codes were right</h3>
+      <h4> Confirm now the QR Code the pass the Gate!</h4>
+      <h5> This is the gate number {{message }} </h5>
+    <video id="preview"></video>
+    <script>
+        let scanner = new Instascan.Scanner(
+            {
+                video: document.getElementById('preview')
+            }
+        );
+        scanner.addListener('scan', function(content) {
+            alert('Escaneou o conteudo: ' + content);
+            gocheckcode(content)
+            console.log(content)
+        });
+        
+        function gocheckcode(content){
+            requestData = {
+                "code" : content
+            }
+            console.log(content)
+            $.ajax({
+             url: '/gates/{{message}}/checkcode',
+             type: "POST",
+             dataType: "json",
+             contentType: 'application/json',
+             data: JSON.stringify(requestData),
+             success: function (data) {
+                  console.log(data.id);
+                  if (data.id != "-1" ) {
+                     window.open("http://192.168.1.90:8000/gates/{{message}}/user/"+ data.id +"/confirmed", "_blank");
+            } else { 
+                window.open("http://192.168.1.90:8000/gates/{{message}}/user/notconfirmed", "_blank");
+            }
+             }
+            });
+        }
+
+        Instascan.Camera.getCameras().then(cameras => 
+        {
+            if(cameras.length > 0){
+                scanner.start(cameras[0]);
+            } else {
+                console.error("Não existe câmera no dispositivo!");
+            }
+        });
+    </script>
+
+
+
+ </body>
+</html>

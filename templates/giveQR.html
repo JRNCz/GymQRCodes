@@ -1,0 +1,10 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+<p> Your QR Code is ready :</p>
+<div>
+ <object type="image/png" data="{{image_url}}">
+ </object>
+</div>
+{% endblock %}
